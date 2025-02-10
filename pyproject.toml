@@ -1,0 +1,9 @@
+[project]
+name = "moju-ae-challenge"
+version = "0.1.0"
+description = "A minimal project for use in the MOJU recruitment process."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "dbt-duckdb>=1.9.1",
+]

@@ -1,0 +1,26 @@
+
+name: 'moju_ae_challenge'
+version: '1.0.0'
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'moju_ae_challenge'
+
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+seed-paths: ["seeds"]
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+sources:
+  moju_ae_challenge:
+    main:
+      +enabled: false
+
+models:
+  moju_ae_challenge:
+    main:
+      +materialized: view

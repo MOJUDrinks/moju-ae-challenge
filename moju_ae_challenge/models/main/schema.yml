@@ -1,0 +1,103 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: A dimension model for MOJU products.
+    columns:
+      - name: product_name
+        description: >
+          A unique name for the product. Human readable, but unique
+          and usable as a primary key.
+        data_tests:
+          - unique
+          - not_null
+      - name: product_type
+        description: >
+          An identifier for the type of product. This describes the size
+          and packaging of the product e.g. `shot_60ml` describes a single
+          serve unit in a 60ml bottle.
+        data_tests:
+          - not_null
+      - name: recipe
+        description: >
+          An identifier for the recipe of the drink in the product. This
+          is consistent between different formats.
+        data_tests:
+          - not_null
+
+  - name: dim_stores
+    description: >
+      A dimension model for grocery stores that sell MOJU products.
+    columns:
+      - name: store_id
+        description: >
+          A unique identifier for the store. The first letter of which
+          identifies the customer.
+        data_tests:
+          - unique
+          - not_null
+      - name: store_name
+        description: >
+          A human readable name of the store.
+        data_tests:
+          - not_null
+      - name: store_type
+        description: >
+          An identifier for the type of store. This describes the size
+          and location of the store e.g. `main` describes a large
+          store in a city.
+        data_tests:
+          - not_null
+      - name: customer_name
+        description: >
+          The name of the customer that owns the store. A customer in
+          this context is not the end consumer who buys a product off
+          the shelf, but the business that buys the product from MOJU.
+          Specifically for this challenge, all of the customers are
+          large (fake) grocery store chains.
+        data_tests:
+          - not_null
+      - name: place_name
+        description: >
+          The name of the town or city which the store is located in.
+        data_tests:
+          - not_null
+
+  - name: fact_sales
+    description: >
+      A fact model for sales of MOJU products in each of the stores.
+    columns:
+      - name: store_id
+        description: >
+          A unique identifier for the store. The first letter of which
+          identifies the customer.
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_stores')
+              field: store_id
+      - name: product_name
+        description: >
+          A unique name for the product. Human readable.
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim-products')
+              field: product_name
+      - name: week
+        description: >
+          The week of the sale. Identified by the date of the Monday of the week.
+        data_tests:
+          - not_null
+      - name: units
+        description: >
+          The number of units of the product sold.
+        data_tests:
+          - not_null
+      - name: revenue
+        description: >
+          The gross revenue from the sale of the product. NOTE: This is the revenue
+          taken by the customer (i.e. the total amount spent by consumers), not
+          necessarily the revenue taken by MOJU.
+        data_tests:
+          - not_null

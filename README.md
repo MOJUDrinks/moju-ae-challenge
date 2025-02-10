@@ -13,6 +13,9 @@ The datasets contained within relate to store-by-store sales of MOJU
 products across several customers. Descriptions of the meanings of the
 columns and tables already present are in stored in the _usual place_.
 
+This challenge is designed to be _possible_ within 1 hr, and please
+**do not spend more than 2 hrs on it**.
+
 ## What do I need to do?
 
 We'd like you to complete a short analytics engineering challenge. That

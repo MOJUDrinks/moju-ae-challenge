@@ -46,8 +46,6 @@ The tasks we'd like you to do are:
    - Which town sold the most MOJU products in 2023?
    - Which product showed the greatest absolute increase in revenue
      from Q1 to Q4?
-   - Which customer sold the greatest proportion of units on deal
-     (i.e. below normal retail price)?
 4. During the period covered by the data, some products were sold
    on promotion (i.e. for a lower retail price than normal). We want
    to understand our _Rate of Sale_, and even more so, our _Base_
